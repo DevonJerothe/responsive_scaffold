@@ -14,6 +14,8 @@ class ResponsiveScaffold extends StatelessWidget {
     this.kTabletBreakpoint = 720.0,
     this.kDesktopBreakpoint = 1440.0,
     this.appBarElevation,
+    this.hideAppBar = false,
+    this.bottom,
   });
 
   final Widget drawer, endDrawer;
@@ -30,11 +32,15 @@ class ResponsiveScaffold extends StatelessWidget {
   final kDesktopBreakpoint;
   final _drawerWidth = 304.0;
 
+  final bool hideAppBar;
+
   final IconData menuIcon, endIcon;
 
   final double appBarElevation;
 
   final Key scaffoldKey;
+
+  final PreferredSize bottom;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +65,7 @@ class ResponsiveScaffold extends StatelessWidget {
                     Expanded(
                       child: Scaffold(
                         key: scaffoldKey,
-                        appBar: AppBar(
+                        appBar: hideAppBar ? null : AppBar(
                           elevation: appBarElevation,
                           automaticallyImplyLeading: false,
                           title: title,
@@ -68,6 +74,7 @@ class ResponsiveScaffold extends StatelessWidget {
                               trailing,
                             ],
                           ],
+                          bottom: bottom == null ? null : bottom,
                         ),
                         body: Row(
                           children: <Widget>[
@@ -112,7 +119,7 @@ class ResponsiveScaffold extends StatelessWidget {
                       child: drawer,
                     ),
                   ),
-            appBar: AppBar(
+            appBar: hideAppBar ? null : AppBar(
               elevation: appBarElevation,
               automaticallyImplyLeading: false,
               title: title,
@@ -122,6 +129,7 @@ class ResponsiveScaffold extends StatelessWidget {
                   trailing,
                 ],
               ],
+              bottom: bottom == null ? null : bottom,
             ),
             body: SafeArea(
               right: false,
@@ -174,7 +182,7 @@ class ResponsiveScaffold extends StatelessWidget {
                     child: endDrawer,
                   ),
                 ),
-          appBar: AppBar(
+          appBar: hideAppBar ? null : AppBar(
             elevation: appBarElevation,
             automaticallyImplyLeading: false,
             leading: _MenuButton(iconData: menuIcon),
@@ -187,6 +195,7 @@ class ResponsiveScaffold extends StatelessWidget {
                 _OptionsButton(iconData: endIcon),
               ]
             ],
+            bottom: bottom == null ? null : bottom,
           ),
           body: body,
           floatingActionButton: floatingActionButton,
