@@ -56,26 +56,26 @@ class ResponsiveScaffold extends StatelessWidget {
                       SizedBox(
                         width: _drawerWidth,
                         child: Drawer(
-                          child: SafeArea(
-                            child: drawer,
-                          ),
+                          child: drawer,
                         ),
                       ),
                     ],
                     Expanded(
                       child: Scaffold(
                         key: scaffoldKey,
-                        appBar: hideAppBar ? null : AppBar(
-                          elevation: appBarElevation,
-                          automaticallyImplyLeading: false,
-                          title: title,
-                          actions: <Widget>[
-                            if (trailing != null) ...[
-                              trailing,
-                            ],
-                          ],
-                          bottom: bottom == null ? null : bottom,
-                        ),
+                        appBar: hideAppBar
+                            ? null
+                            : AppBar(
+                                elevation: appBarElevation,
+                                automaticallyImplyLeading: false,
+                                title: title,
+                                actions: <Widget>[
+                                  if (trailing != null) ...[
+                                    trailing,
+                                  ],
+                                ],
+                                bottom: bottom == null ? null : bottom,
+                              ),
                         body: Row(
                           children: <Widget>[
                             Expanded(
@@ -115,22 +115,22 @@ class ResponsiveScaffold extends StatelessWidget {
             drawer: drawer == null
                 ? null
                 : Drawer(
-                    child: SafeArea(
-                      child: drawer,
-                    ),
+                    child: drawer,
                   ),
-            appBar: hideAppBar ? null : AppBar(
-              elevation: appBarElevation,
-              automaticallyImplyLeading: false,
-              title: title,
-              leading: _MenuButton(iconData: menuIcon),
-              actions: <Widget>[
-                if (trailing != null) ...[
-                  trailing,
-                ],
-              ],
-              bottom: bottom == null ? null : bottom,
-            ),
+            appBar: hideAppBar
+                ? null
+                : AppBar(
+                    elevation: appBarElevation,
+                    automaticallyImplyLeading: false,
+                    title: title,
+                    leading: _MenuButton(iconData: menuIcon),
+                    actions: <Widget>[
+                      if (trailing != null) ...[
+                        trailing,
+                      ],
+                    ],
+                    bottom: bottom == null ? null : bottom,
+                  ),
             body: SafeArea(
               right: false,
               bottom: false,
@@ -171,9 +171,7 @@ class ResponsiveScaffold extends StatelessWidget {
           drawer: drawer == null
               ? null
               : Drawer(
-                  child: SafeArea(
-                    child: drawer,
-                  ),
+                  child: drawer,
                 ),
           endDrawer: endDrawer == null
               ? null
@@ -182,21 +180,23 @@ class ResponsiveScaffold extends StatelessWidget {
                     child: endDrawer,
                   ),
                 ),
-          appBar: hideAppBar ? null : AppBar(
-            elevation: appBarElevation,
-            automaticallyImplyLeading: false,
-            leading: _MenuButton(iconData: menuIcon),
-            title: title,
-            actions: <Widget>[
-              if (trailing != null) ...[
-                trailing,
-              ],
-              if (endDrawer != null) ...[
-                _OptionsButton(iconData: endIcon),
-              ]
-            ],
-            bottom: bottom == null ? null : bottom,
-          ),
+          appBar: hideAppBar
+              ? null
+              : AppBar(
+                  elevation: appBarElevation,
+                  automaticallyImplyLeading: false,
+                  leading: _MenuButton(iconData: menuIcon),
+                  title: title,
+                  actions: <Widget>[
+                    if (trailing != null) ...[
+                      trailing,
+                    ],
+                    if (endDrawer != null) ...[
+                      _OptionsButton(iconData: endIcon),
+                    ]
+                  ],
+                  bottom: bottom == null ? null : bottom,
+                ),
           body: body,
           floatingActionButton: floatingActionButton,
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
